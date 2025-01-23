@@ -3,10 +3,15 @@ from django.shortcuts import render
 
 def index(request): #в реквест попадает экземпляр класс ( анонимный, зарегистр., куки и т.д.) Это называется контролер, а не ф-ция.
     context : dict[str, str] ={
-        'title': 'Home',
-        'content': 'Главная страница магазина - Home'
+        'title': 'Home - Главная',
+        'content': 'Магазин мебели Home'
     }
     return render(request, 'main/index.html', context)
 
 def about(request):
-    return HttpResponse('About Page')
+    context: dict[str, str] = {
+        'title': 'HOME - О нас',
+        'content': 'О нас',
+        'text_on_page': 'Rsdfds sd fsdf sdf sdf ds fsd sd fds fds d ssdf',
+    }
+    return render(request, 'main/about.html', context)
