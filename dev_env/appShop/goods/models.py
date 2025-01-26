@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class Categories(models.Model):
     name = models.CharField(max_length=150, unique=True, verbose_name='Название')
@@ -12,6 +13,7 @@ class Categories(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class Products(models.Model):
     name = models.CharField(max_length=150, unique=True, verbose_name='Название')
@@ -30,12 +32,12 @@ class Products(models.Model):
         ordering = ('id',)
 
     def __str__(self):
-        return f'{self.name } Количество - { self.quantity}'
+        return f'{self.name} Количество - {self.quantity}'
 
     def display_id(self):
         return f'{self.id:05}'
 
     def self_price(self):
         if self.discount:
-            return round(self.price - self.price * self.discount/100, 2)
+            return round(self.price - self.price * self.discount / 100, 2)
         return self.price
