@@ -70,7 +70,10 @@ def profile(request):
     }
     return render(request, 'users/profile.html', context)
 
+def users_cart(request):
+    return render(request, 'users/users-cart.html')
 
+@login_required
 def logout(request):
     messages.success(request, f'{request.user.username}, Вы вышли из аккаунта!')
     auth.logout(request)

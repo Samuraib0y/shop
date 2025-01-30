@@ -2,8 +2,12 @@
 {% load static %}
 {% load goods_tags %}
 
-{% block content %}
+{% block modal_cart %}
+{% include 'cart_button.html' %}
+{% endblock %}
 
+
+{% block content %}
 
 
     <div class="row">
@@ -83,12 +87,12 @@
 
                             {% if product.discount %}
                                 <p><s>{{ product.price }}</s> $</p>
-                                <p><strong>{{ product.self_price }}</strong></p>
+                                <p><strong>{{ product.sell_price }}</strong></p>
                                 <span class="badge bg-warning text-dark">Скидка {{ product.discount }} %</span>
                             {% else %}
                                 <p><strong>{{ product.price }} $</strong></p>
                             {% endif %}
-                            <a href="#" class="btn">
+                            <a href="{% url 'cart:cart_add' product.slug %}" class="btn">
                                 <img class="mx-1" src="{% static 'deps/icons/cart-plus.svg' %}" alt="Catalog Icon"
                                      width="32" height="32">
                             </a>
